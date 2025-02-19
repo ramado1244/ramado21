@@ -10,24 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Generate sitemap
-      run: |
-        # Your script to generate the sitemap
-        echo "Generating sitemap..."
-        # Example command
-        touch sitemap.xml
+      - name: Generate sitemap
+        run: |
+          # Your sitemap generation script here
+          echo "Sitemap generated"
 
-    - name: Commit and push sitemap
-      env:
-        GIT_AUTHOR_NAME: github-actions
-        GIT_AUTHOR_EMAIL: github-actions@github.com
-        GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
-      run: |
-        git config --global user.name "${GIT_AUTHOR_NAME}"
-        git config --global user.email "${GIT_AUTHOR_EMAIL}"
-        git add sitemap.xml
-        git commit -m "Automated sitemap update"
-        git push origin main
+      - name: Commit sitemap
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add sitemap.xml
+          git commit -m "Automated sitemap update"
+          git push origin main
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
