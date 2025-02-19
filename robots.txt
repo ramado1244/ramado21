@@ -1,3 +1,0 @@
- User-agent: *
-Allow: /
-Sitemap: https://ramado1244.github.io/ramado21/sitemap.xml 
