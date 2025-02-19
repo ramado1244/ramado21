@@ -2,28 +2,30 @@ name: Generate xml sitemap
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  sitemap_job:
     runs-on: ubuntu-latest
+    name: Generate a sitemap
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout the repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 
 
+    - name: Generate the sitemap
+      uses: cicirello/generate-sitemap@v1
+      with:
+        base-url-path: https://www.example.com/
+
+    - name: Commit and push
       run: |
-        # Your sitemap generation script here
-        echo "Sitemap generated"
-        mv ramado21/sitemap.xml sitemap.xml  # Ensure the file is moved to the root directory
-
-      - name: Commit sitemap
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+        if [[ `git status --porcelain sitemap.xml` ]]; then
+          git config --global user.name 'github-actions'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add sitemap.xml
-          git commit -m "Automated sitemap update"
-          git push origin main
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          git commit -m "Automated sitemap update" sitemap.xml
+          git push
+        fi
