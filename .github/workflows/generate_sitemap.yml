@@ -20,4 +20,4 @@ jobs:
           base-url: "https://ramado1244.github.io"  # Ganti dengan URL GitHub Pages Anda
           base-url-path: "https://ramado1244.github.io/ramado21/"
           include-extensions: "html"
-          path-to-root: ramado21/
+          path-to-root: .
