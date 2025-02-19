@@ -2,30 +2,32 @@ name: Generate xml sitemap
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  sitemap_job:
+  build:
     runs-on: ubuntu-latest
-    name: Generate a sitemap
 
     steps:
-    - name: Checkout the repo
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0 
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-    - name: Generate the sitemap
-      uses: cicirello/generate-sitemap@v1
-      with:
-        base-url-path: https://ramado1244.github.io/ramado21
-
-    - name: Commit and push
+    - name: Generate sitemap
       run: |
-        if [[ `git status --porcelain sitemap.xml` ]]; then
-          git config --global user.name 'github-actions'
-          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add sitemap.xml
-          git commit -m "Automated sitemap update" sitemap.xml
-          git push
-        fi
+        # Your script to generate the sitemap
+        echo "Generating sitemap..."
+        # Example command
+        touch sitemap.xml
+
+    - name: Commit and push sitemap
+      env:
+        GIT_AUTHOR_NAME: github-actions
+        GIT_AUTHOR_EMAIL: github-actions@github.com
+        GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
+      run: |
+        git config --global user.name "${GIT_AUTHOR_NAME}"
+        git config --global user.email "${GIT_AUTHOR_EMAIL}"
+        git add sitemap.xml
+        git commit -m "Automated sitemap update"
+        git push origin main
