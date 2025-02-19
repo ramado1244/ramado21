@@ -16,7 +16,7 @@ jobs:
       run: |
         # Your sitemap generation script here
         echo "Sitemap generated"
-        mv path/to/generated/sitemap.xml sitemap.xml  # Ensure the file is moved to the root directory
+        mv ramado21/sitemap.xml sitemap.xml  # Ensure the file is moved to the root directory
 
       - name: Commit sitemap
         run: |
