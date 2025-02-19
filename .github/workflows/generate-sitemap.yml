@@ -13,10 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Generate sitemap
-        run: |
-          # Your sitemap generation script here
-          echo "Sitemap generated"
+      run: |
+        # Your sitemap generation script here
+        echo "Sitemap generated"
+        mv path/to/generated/sitemap.xml sitemap.xml  # Ensure the file is moved to the root directory
 
       - name: Commit sitemap
         run: |
