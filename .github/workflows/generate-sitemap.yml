@@ -1,20 +1,31 @@
-name: Generate Sitemap
+name: Generate xml sitemap
 
 on:
   push:
-    branches:
-      - main  # Ganti dengan nama branch utama Anda jika berbeda
+    branches: [ main ]
 
 jobs:
-  build:
+  sitemap_job:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Penting untuk mendapatkan riwayat commit lengkap
+    name: Generate a sitemap
 
-      - name: Generate Sitemap
-        uses: cicirello/generate-sitemap@v1
-        with:
-          base-url: "https://ramado1244.github.io/ramado21/"  # Ganti dengan URL GitHub Pages Anda
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 
+
+    - name: Generate the sitemap
+      uses: cicirello/generate-sitemap@v1
+      with:
+        base-url-path: https://ramado1244.github.io/ramado21
+
+    - name: Commit and push
+      run: |
+        if [[ `git status --porcelain sitemap.xml` ]]; then
+          git config --global user.name 'github-actions'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add sitemap.xml
+          git commit -m "Automated sitemap update" sitemap.xml
+          git push
+        fi
