@@ -17,4 +17,4 @@ jobs:
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          base-url: "https://ramado1244.github.io/ramado21/amp.html"  # Ganti dengan URL GitHub Pages Anda
+          base-url: "https://ramado1244.github.io/ramado21/"  # Ganti dengan URL GitHub Pages Anda
