@@ -17,10 +17,10 @@ jobs:
       - name: Generate Sitemap
         uses: cicirello/generate-sitemap@v1
         with:
-          base-url: "https://ramado1244.github.io"  # Ganti dengan URL GitHub Pages Anda
-          base-url-path: "/ramado21/"
+          #base-url: "https://ramado1244.github.io"  # Ganti dengan URL GitHub Pages Anda
+          base-url-path: "https://ramado1244.github.io/ramado21/"
           include-extensions: "html"
-          include-extensions: "txt:
+          include-extensions: "txt"
           path-to-root: .
 
       - name: Commit and Push Sitemap
