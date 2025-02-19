@@ -18,6 +18,16 @@ jobs:
         uses: cicirello/generate-sitemap@v1
         with:
           base-url: "https://ramado1244.github.io"  # Ganti dengan URL GitHub Pages Anda
-          base-url-path: "https://ramado1244.github.io/ramado21/"
+          base-url-path: "/ramado21/"
           include-extensions: "html"
           path-to-root: .
+
+      - name: Commit and Push Sitemap
+        run: |
+          git config --global ramado1244 'Nama Anda'
+          git config --global ramadhani7575@gmail.com 'email@domain.com'
+          git add sitemap.xml
+          git commit -m "Menambahkan sitemap.xml yang dihasilkan"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
