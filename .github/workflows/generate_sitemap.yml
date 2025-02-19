@@ -20,6 +20,7 @@ jobs:
           base-url: "https://ramado1244.github.io"  # Ganti dengan URL GitHub Pages Anda
           base-url-path: "/ramado21/"
           include-extensions: "html"
+          include-extensions: "txt:
           path-to-root: .
 
       - name: Commit and Push Sitemap
