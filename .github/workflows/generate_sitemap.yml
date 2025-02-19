@@ -26,5 +26,5 @@ jobs:
         run: |
           # Tambahkan perintah untuk menyalin sitemap.xml ke direktori yang akan dideploy
           # Misalnya, jika Anda menggunakan direktori 'docs/' sebagai sumber GitHub Pages:
-          cp sitemap.xml ramado21/
+          cp sitemap.xml ./
           # Tambahkan perintah lain yang diperlukan untuk proses deploy
