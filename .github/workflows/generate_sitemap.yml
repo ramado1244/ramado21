@@ -24,8 +24,8 @@ jobs:
 
       - name: Commit and Push Sitemap
         run: |
-          git config --global ramado1244 'Nama Anda'
-          git config --global ramadhani7575@gmail.com 'email@domain.com'
+          git config --global user.name 'ramado1244'
+          git config --global user.email 'ramadhani7575@gmail.com'
           git add sitemap.xml
           git commit -m "Menambahkan sitemap.xml yang dihasilkan"
           git push
