@@ -21,10 +21,3 @@ jobs:
           base-url-path: "https://ramado1244.github.io/ramado21/"
           include-extensions: "html"
           path-to-root: .
-
-      - name: Deploy to GitHub Pages
-        run: |
-          # Tambahkan perintah untuk menyalin sitemap.xml ke direktori yang akan dideploy
-          # Misalnya, jika Anda menggunakan direktori 'docs/' sebagai sumber GitHub Pages:
-          cp sitemap.xml ramado1244/ramado21
-          # Tambahkan perintah lain yang diperlukan untuk proses deploy
